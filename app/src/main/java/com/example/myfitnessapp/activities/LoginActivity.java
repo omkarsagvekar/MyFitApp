@@ -119,14 +119,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        if (databaseHelper.checkUser(Objects.requireNonNull(textInputEditTextEmail.getText()).toString().trim()
-                , Objects.requireNonNull(textInputEditTextPassword.getText()).toString().trim())) {
-
-
-            Intent accountsIntent = new Intent(activity, SkipStep.class);
-            accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
+        if (databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim(),
+                textInputEditTextPassword.getText().toString().trim())) {
+            Intent intent = new Intent(activity, SkipStep.class);
+            intent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
             emptyInputEditText();
-            startActivity(accountsIntent);
+            startActivity(intent);
 
 
         } else {
